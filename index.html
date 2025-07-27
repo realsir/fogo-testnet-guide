@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fogo Testnet Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body, button, h1, h2, h3, p, a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    html, body {
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+    }
+    body {
+      min-height: 100vh;
+      position: relative;
+      background: linear-gradient(135deg, #FF9A2F 0%, #FF6A00 100%) fixed;
+    }
+
+    
+    #splash {
+      position: fixed;
+      z-index: 1000;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #FF9A2F 0%, #FF6A00 100%);
+      transition: opacity 0.6s;
+    }
+    .splash-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 10;
+    }
+    .splash-appear {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: splashFadeIn 1.0s 0.1s forwards;
+    }
+    @keyframes splashFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    #main-content {
+      display: none;
+      animation: fadeInMain 0.8s;
+      background: none;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes fadeInMain {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .button {
+      margin-top: 32px;
+      padding: 16px 40px;
+      font-size: 1.25rem;
+      background: linear-gradient(90deg, #FFA54E 15%, #FC5F2C 100%);
+      color: #fff;
+      border: 2px solid #151515;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(255,107,0,0.13);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: splashFadeIn 1.2s 0.7s forwards;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .button:hover {
+      background: linear-gradient(90deg, #FC5F2C 15%, #FFA54E 100%);
+      box-shadow: 0 4px 16px rgba(252,95,44,0.19);
+      border-color: #FC5F2C;
+      color: #fff;
+    }
+    .guide-title {
+      text-align: center;
+      margin: 40px 0 30px;
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #fff;
+      text-shadow:
+        0 4px 26px rgba(255,133,29,0.33),
+        0 1px 3px rgba(50,30,0,0.09);
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      z-index: 2;
+      position: relative;
+      
+    }
+    .section {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      margin: 40px 0;
+      gap: 38px;
+      flex-wrap: wrap;
+      z-index: 2;
+      position: relative;
+    }
+    .section.reverse {
+      flex-direction: row-reverse;
+    }
+    .section-image {
+      width: 50vw;
+      min-width: 390px;
+      max-width: 700px;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: 0 2px 24px rgba(252,95,44,0.10);
+      object-fit: cover;
+      background: #fff6ee;
+      flex: 1 1 50%;
+      align-self: center;
+      z-index: 2;
+      position: relative;
+    }
+    .section-desc {
+      flex: 1 1 50%;
+      min-width: 220px;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 1.13rem;
+      color: #34261D;
+      gap: 16px;
+      align-self: center;
+      z-index: 2;
+      position: relative;
+      background: rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 12px 18px;
+      backdrop-filter: blur(2px);
+    }
+    .section-desc a {
+      color: #FC5F2C;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .section-desc a:hover {
+      color: #FF9A2F;
+    }
+    .footer {
+      margin: 60px 0 24px;
+      text-align: center;
+      font-size: 1.06rem;
+      color: #322400;
+      word-break: break-word;
+      z-index: 2;
+      position: relative;
+      background: rgba(255,255,255,0.89);
+      border-radius: 13px;
+      box-shadow: 0 4px 32px 0 rgba(255,100,5,0.08);
+      padding: 22px 14px 18px 14px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 540;
+      letter-spacing: 0.01em;
+    }
+    .footer a {
+      color: #FC5F2C;
+      font-weight: 600;
+      text-decoration: underline;
+      transition: color 0.25s;
+    }
+    .footer a:hover {
+      color: #FF9A2F;
+    }
+    @media (max-width:1400px) {
+      .section-image {
+        min-width: 230px;
+        width: 48vw;
+        max-width: 98vw;
+      }
+      .section-desc { max-width: 96vw; }
+    }
+    @media (max-width:800px) {
+      .section { flex-direction: column !important; align-items: center; gap: 20px; }
+      .section-desc { max-width: 98vw; }
+      .section-image { width: 95vw; min-width: 0; max-width: 98vw; }
+      .footer { max-width: 99vw; }
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="splash">
+    <div class="splash-content">
+      <img src="gif.gif" width="260" height="260" style="border-radius:30px;" class="splash-appear" alt="Loading animation" />
+      <button class="button" id="enter-btn">Testnet Guide</button>
+    </div>
+  </div>
+
+  
+  <div id="main-content">
+    <div class="guide-title">Fogo Testnet Guide</div>
+
+    
+    <div class="section">
+      <img class="section-image" src="1.png" alt="Fogo Faucet" />
+      <div class="section-desc">
+        <div>1. Go to <a href="https://faucet.fogo.io/" target="_blank">Fogo Faucet</a></div>
+        <div>2. Paste your SOL address</div>
+        <div>3. Request tokens</div>
+      </div>
+    </div>
+    
+    <div class="section reverse">
+      <img class="section-image" src="2.png" alt="Valiant" />
+      <div class="section-desc">
+        <div>1. Go to <a href="https://valiant.trade/" target="_blank">Valiant</a></div>
+        <div>2. Connect your SOL wallet</div>
+        <div>3. Open the Trade tab</div>
+        <div>4. Choose any token and make a swap</div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <img class="section-image" src="3.png" alt="Pools" />
+      <div class="section-desc">
+        <div>1. Go to the Pools tab</div>
+        <div>2. Select any pool</div>
+        <div>3. Add liquidity</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      This website made by <a href="https://x.com/realsirandrew" target="_blank">realsir</a> especially for the Fogo community.
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('enter-btn').onclick = function() {
+      document.getElementById('splash').style.opacity = 0;
+      setTimeout(function() {
+        document.getElementById('splash').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+      }, 600);
+    };
+    setTimeout(function() {
+      if (document.getElementById('splash').style.display !== 'none') {
+        document.getElementById('enter-btn').click();
+      }
+    }, 12000);
+  </script>
+</body>
+</html>
