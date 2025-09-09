@@ -73,6 +73,23 @@
         0 0 5px #ff9a2fcc,
         0 0 2px #000;
     }
+    .pyron-title {
+      text-align: center;
+      margin: 36px 0 28px;
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: 2.8px;
+      color: #FF7F1A;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      z-index: 2;
+      position: relative;
+      animation: fogoPulse 1.6s ease-in-out infinite;
+      text-shadow:
+        0 0 16px #ffb553cc,
+        0 2px 8px #181818ee,
+        0 0 5px #ff9a2fcc,
+        0 0 2px #000;
+    }
     @keyframes fogoPulse {
       0%   { opacity: 1;   filter: brightness(1) drop-shadow(0 0 5px #ff9a2f66);}
       50%  { opacity: 0.67; filter: brightness(1.21) drop-shadow(0 0 18px #ffbe84cc);}
@@ -130,8 +147,8 @@
     </div>
   </div>
   <div id="main-content">
-    <div class="guide-title">Fogo Testnet Guide</div>
-    
+    <div class="guide-title">Valient Testnet</div>
+    <!-- Steps 1-16 ... unchanged ... -->
     <!-- Step 1 -->
     <div class="step-section">
       <img class="step-image" src="1.png" alt="Fogo Faucet"/>
@@ -199,7 +216,7 @@
     <div class="step-section reverse">
       <img class="step-image" src="8.png" alt="SOL Wallet Login"/>
       <div class="step-desc">
-        <div>1. Authorize on the site using your SOL-wallet</div>
+        <div>1. Authorize on the <a href="https://fogolend.com/markets/testnet" target="_blank">site</a> using your SOL-wallet</div>
       </div>
     </div>
     <!-- Step 9 -->
@@ -241,6 +258,54 @@
       <img class="step-image" src="13.png" alt="Pyth Lazer Tracking"/>
       <div class="step-desc">
         <div>1. On this tab you can track price changes – this is possible thanks to Pyth Lazer technology</div>
+      </div>
+    </div>
+    <div class="guide-title">Brasa Testnet</div>
+    <!-- Step 14 -->
+    <div class="step-section">
+      <img class="step-image" src="14.png" alt="Brasa Login"/>
+      <div class="step-desc">
+        <div>1. Go to the <a href="https://testnet.brasa.finance/" target="_blank">site</a> and log in with your wallet.</div>
+      </div>
+    </div>
+    <!-- Step 15 -->
+    <div class="step-section reverse">
+      <img class="step-image" src="15.png" alt="Brasa Wallet"/>
+      <div class="step-desc">
+        <div>2. Click your wallet: here you can check your balance, send and request tokens.</div>
+      </div>
+    </div>
+    <!-- Step 16 -->
+    <div class="step-section">
+      <img class="step-image" src="16.png" alt="Brasa Staking"/>
+      <div class="step-desc">
+        <div>3. Send your tokens to Staking, and at the bottom you will see a message that everything was successful.</div>
+      </div>
+    </div>
+    <!-- Новый раздел Pyron Testnet -->
+    <div class="pyron-title">Pyron Testnet</div>
+    <!-- Step 17 -->
+    <div class="step-section">
+      <img class="step-image" src="17.png" alt="Pyron Pool"/>
+      <div class="step-desc">
+        <div>1. Go to <a href="https://app.pyron.fi/" target="_blank">Pyron</a> and log in.</div>
+        <div>2. Choose the pool you are interested in.</div>
+      </div>
+    </div>
+    <!-- Step 18 -->
+    <div class="step-section reverse">
+      <img class="step-image" src="18.png" alt="Pyron Borrow"/>
+      <div class="step-desc">
+        <div>1. Enter the amount you want to borrow.</div>
+        <div>2. Confirm the transaction.</div>
+      </div>
+    </div>
+    <!-- Step 19 -->
+    <div class="step-section">
+      <img class="step-image" src="19.png" alt="Pyron Second Borrow"/>
+      <div class="step-desc">
+        <div>1. Now you can borrow tokens from another pool.<br>Choose another pool (for example, with fUSD),</div>
+        <div>2. Click on the <b>Borrow</b> button, enter the amount, and confirm the transaction.</div>
       </div>
     </div>
     <div class="footer">
@@ -321,4 +386,5 @@
   </script>
 </body>
 </html>
+
 <script>window.scrollTo(0, 0); setTimeout(function() { window.scrollTo(0, 0); },200)</script>
